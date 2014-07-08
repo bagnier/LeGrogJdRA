@@ -12,9 +12,33 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
+					<label class="control-label" for="url">Url</label>
 					<div class="controls">
-						<textarea data-ng-model="article.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+						<input type="text" data-ng-model="article.url" id="url" class="form-control" placeholder="Url" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="authors">Authors</label>
+					<div class="controls">
+						<input type="text" data-ng-model="article.authorsCommaSeparated" id="authors" class="form-control" placeholder="Authors" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="language">Language</label>
+					<div class="controls">
+						<input type="text" data-ng-model="article.language" id="language" class="form-control" placeholder="Language" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="format">Format</label>
+					<div class="controls">
+						<input type="text" data-ng-model="article.format" id="format" class="form-control" placeholder="Format" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="description">Description</label>
+					<div class="controls">
+						<textarea data-ng-model="article.description" id="description" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
 					</div>
 				</div>
 				<div class="form-group">

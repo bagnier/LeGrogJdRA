@@ -7,7 +7,12 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.create = function() {
 			var article = new Articles({
 				title: this.title,
-				content: this.content
+				url: this.url,
+				format: this.format,
+				description: this.description,
+				language: this.language,
+				authorsCommaSeparated: this.authorsCommaSeparated
+
 			});
 			article.$save(function(response) {
 				$location.path('articles/' + response._id);
@@ -16,7 +21,12 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			});
 
 			this.title = '';
-			this.content = '';
+			this.url = '';
+			this.format = '';
+			this.description = '';
+			this.language = '';
+			this.authorsCommaSeparated = '';
+
 		};
 
 		$scope.remove = function(article) {

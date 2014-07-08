@@ -18,5 +18,11 @@
 			<span data-ng-bind="article.user.displayName"></span>
 		</em>
 	</small>
-	<p class="lead" data-ng-bind="article.content"></p>
+	<ul>
+  		<li data-ng-repeat="author in article.authors"><a href="{{author.url}}">{{author.name}}</a></li>
+  	</ul>
+  	<p class="" data-ng-bind="article.url"></p>
+  	<p class="" data-ng-bind="article.format"></p>
+  	<p class="" data-ng-bind="article.language"></p>
+  	<p class="lead" data-ng-bind="article.description"></p>
 </section>

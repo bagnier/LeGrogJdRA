@@ -62,7 +62,7 @@ var ArticleSchema = new Schema({
 ArticleSchema.virtual('authorsCommaSeparated')
 .get(function () {
 	var authorNames = [];
-	for (var i=0; i<this.authors.length; i++) {
+	for (var i = 0; i < this.authors.length; i++) {
 		authorNames.push(this.authors[i].name);
 	};
   return authorNames.join(';');
@@ -71,8 +71,8 @@ ArticleSchema.virtual('authorsCommaSeparated')
 .set(function (authorsCommaSeparated) {
   	var authorNames = authorsCommaSeparated.split(';');
   	var authors = [];
-  	for (var authorIndex in authorNames) {
-		authors.push({name:authorNames[authorIndex], url:''});
+  	for (var i in authorNames) {
+		authors.push({name:authorNames[i], url:''});
 	};
   	this.set('authors', authors);
 });

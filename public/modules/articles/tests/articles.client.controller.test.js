@@ -54,7 +54,7 @@
 			// Create sample article using the Articles service
 			var sampleArticle = new Articles({
 				title: 'An Article about MEAN',
-				content: 'MEAN rocks!'
+				description: 'MEAN rocks!'
 			});
 
 			// Create a sample articles array that includes the new article
@@ -75,7 +75,7 @@
 			// Define a sample article object
 			var sampleArticle = new Articles({
 				title: 'An Article about MEAN',
-				content: 'MEAN rocks!'
+				description: 'MEAN rocks!'
 			});
 
 			// Set the URL parameter
@@ -96,19 +96,19 @@
 			// Create a sample article object
 			var sampleArticlePostData = new Articles({
 				title: 'An Article about MEAN',
-				content: 'MEAN rocks!'
+				description: 'MEAN rocks!'
 			});
 
 			// Create a sample article response
 			var sampleArticleResponse = new Articles({
 				_id: '525cf20451979dea2c000001',
 				title: 'An Article about MEAN',
-				content: 'MEAN rocks!'
+				description: 'MEAN rocks!'
 			});
 
 			// Fixture mock form input values
 			scope.title = 'An Article about MEAN';
-			scope.content = 'MEAN rocks!';
+			scope.description = 'MEAN rocks!';
 
 			// Set POST response
 			$httpBackend.expectPOST('articles', sampleArticlePostData).respond(sampleArticleResponse);
@@ -119,7 +119,7 @@
 
 			// Test form inputs are reset
 			expect(scope.title).toEqual('');
-			expect(scope.content).toEqual('');
+			expect(scope.description).toEqual('');
 
 			// Test URL redirection after the article was created
 			expect($location.path()).toBe('/articles/' + sampleArticleResponse._id);
@@ -130,7 +130,7 @@
 			var sampleArticlePutData = new Articles({
 				_id: '525cf20451979dea2c000001',
 				title: 'An Article about MEAN',
-				content: 'MEAN Rocks!'
+				description: 'MEAN Rocks!'
 			});
 
 			// Mock article in scope

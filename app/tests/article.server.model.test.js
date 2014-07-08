@@ -56,7 +56,7 @@ describe('Article Model Unit Tests:', function() {
 			var authorNames = [];
 			for (var author in article.authors) {
 				authorNames += article.authors[author].name;
-			};
+			}
 			authorNames.should.containEql('Franck Lloyd Wright');
 			authorNames.should.containEql('Rem Koolhaas');
 			authorNames.should.containEql('Ludwig Mies Van Der Rohe');

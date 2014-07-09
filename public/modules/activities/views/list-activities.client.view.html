@@ -10,7 +10,8 @@
 				by
 				<span data-ng-bind="activity.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="activity.name"></h4>
+			<h4 class="list-group-item-heading" data-ng-bind="activity.story"></h4>
+            <p data-ng-bind="activity.article.title"></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!activities.$resolved || activities.length">

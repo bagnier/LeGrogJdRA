@@ -53,7 +53,7 @@
 		it('$scope.find() should create an array with at least one Activity object fetched from XHR', inject(function(Activities) {
 			// Create sample Activity using the Activities service
 			var sampleActivity = new Activities({
-				name: 'New Activity'
+				story: 'New Activity'
 			});
 
 			// Create a sample Activities array that includes the new Activity
@@ -73,7 +73,7 @@
 		it('$scope.findOne() should create an array with one Activity object fetched from XHR using a activityId URL parameter', inject(function(Activities) {
 			// Define a sample Activity object
 			var sampleActivity = new Activities({
-				name: 'New Activity'
+				story: 'New Activity'
 			});
 
 			// Set the URL parameter
@@ -93,17 +93,17 @@
 		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Activities) {
 			// Create a sample Activity object
 			var sampleActivityPostData = new Activities({
-				name: 'New Activity'
+				story: 'New Activity'
 			});
 
 			// Create a sample Activity response
 			var sampleActivityResponse = new Activities({
 				_id: '525cf20451979dea2c000001',
-				name: 'New Activity'
+				story: 'New Activity'
 			});
 
 			// Fixture mock form input values
-			scope.name = 'New Activity';
+			scope.story = 'New Activity';
 
 			// Set POST response
 			$httpBackend.expectPOST('activities', sampleActivityPostData).respond(sampleActivityResponse);
@@ -113,7 +113,7 @@
 			$httpBackend.flush();
 
 			// Test form inputs are reset
-			expect(scope.name).toEqual('');
+			expect(scope.story).toEqual('');
 
 			// Test URL redirection after the Activity was created
 			expect($location.path()).toBe('/activities/' + sampleActivityResponse._id);
@@ -123,7 +123,7 @@
 			// Define a sample Activity put data
 			var sampleActivityPutData = new Activities({
 				_id: '525cf20451979dea2c000001',
-				name: 'New Activity'
+				story: 'New Activity'
 			});
 
 			// Mock Activity in scope

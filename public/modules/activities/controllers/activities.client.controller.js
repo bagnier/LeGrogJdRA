@@ -9,7 +9,8 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 		$scope.create = function() {
 			// Create new Activity object
 			var activity = new Activities ({
-				name: this.name
+				story: this.story,
+				action: this.action
 			});
 
 			// Redirect after save
@@ -20,7 +21,8 @@ angular.module('activities').controller('ActivitiesController', ['$scope', '$sta
 			});
 
 			// Clear form fields
-			this.name = '';
+			this.story = '';
+			this.action = '';
 		};
 
 		// Remove existing Activity

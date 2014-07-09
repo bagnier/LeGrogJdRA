@@ -10,11 +10,21 @@ var mongoose = require('mongoose'),
  * Activity Schema
  */
 var ActivitySchema = new Schema({
-	name: {
+	story: {
 		type: String,
 		default: '',
-		required: 'Please fill Activity name',
+		required: 'Please fill Activity story',
 		trim: true
+	},
+	action: {
+		type: String,
+		default: '',
+		required: 'Please fill Activity action',
+		trim: true
+	},
+	article: {
+		type: Schema.ObjectId,
+		ref: 'Article'
 	},
 	created: {
 		type: Date,

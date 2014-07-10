@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Article = mongoose.model('Article'),
+	Activity = mongoose.model('Activity'),
 	_ = require('lodash');
 
 /**
@@ -103,6 +104,21 @@ exports.list = function(req, res) {
 			});
 		} else {
 			res.jsonp(articles);
+		}
+	});
+};
+
+/**
+ * List of Activities related to an article
+ */
+exports.activities = function(req, res) {
+	Activity.find({article: req.article._id}).sort('-created').populate('user', 'displayName').exec(function(err, activities) {
+		if (err) {
+			return res.send(400, {
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(activities);
 		}
 	});
 };

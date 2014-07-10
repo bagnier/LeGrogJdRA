@@ -92,6 +92,44 @@
 			expect(scope.article).toEqualData(sampleArticle);
 		}));
 
+		it('$scope.findOneArticleAndRelatedActivities() should create an array with one article object fetched from XHR using a articleId URL parameter', inject(function(Articles, Activities) {
+			// Define a sample article object
+			var sampleArticle = new Articles({
+				title: 'An Article about MEAN',
+				description: 'MEAN rocks!'
+			});
+
+			// Set the URL parameter
+			$stateParams.articleId = '525a8422f6d0f87f0e407a33';
+
+			var sampleActivities = [
+				{
+					_id: '525cf20451979dea2c000002',
+					story:'Grognaute vient de capturer une nouvelle fiche intitulée An Article about MEAN',
+					action:'article.create',
+					article:$stateParams.articleId
+				},
+				{
+					_id: '525cf20451979dea2c000003',
+					story:'Grognaute vient de capturer une nouvelle fiche intitulée An Article about MEAN',
+					action:'article.create',
+					article:$stateParams.articleId
+				},
+			];
+
+			// Set GET response
+			$httpBackend.expectGET('articles/' + $stateParams.articleId).respond(sampleArticle);
+			$httpBackend.expectGET('articles/' + $stateParams.articleId + '/activities').respond(sampleActivities);
+
+			// Run controller functionality
+			scope.findOneArticleAndRelatedActivities();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.article).toEqualData(sampleArticle);
+			expect(scope.activities).toEqualData(sampleActivities);
+		}));
+
 		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Articles, Activities) {
 
 			// Fixture mock form input values

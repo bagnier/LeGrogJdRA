@@ -76,5 +76,14 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				articleId: $stateParams.articleId
 			});
 		};
+
+		$scope.findOneArticleAndRelatedActivities = function() {
+			$scope.article = Articles.get({
+				articleId: $stateParams.articleId
+			});
+			$scope.activities = Articles.findActivities({
+				articleId: $stateParams.articleId
+			});
+		};
 	}
 ]);

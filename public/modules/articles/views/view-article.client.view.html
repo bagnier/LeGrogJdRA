@@ -1,4 +1,4 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+<section data-ng-controller="ArticlesController" data-ng-init="findOneArticleAndRelatedActivities()">
 	<div class="page-header">
 		<h1 data-ng-bind="article.title"></h1>
 	</div>
@@ -25,4 +25,7 @@
   	<p class="" data-ng-bind="article.format"></p>
   	<p class="" data-ng-bind="article.language"></p>
   	<p class="lead" data-ng-bind="article.description"></p>
+  	<ul>
+  		<li data-ng-repeat="activity in activities">{{activity.story}}</li>
+  	</ul>
 </section>

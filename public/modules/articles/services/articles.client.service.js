@@ -8,6 +8,11 @@ angular.module('articles').factory('Articles', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			findActivities: {
+				method: 'GET',
+				isArray: true,
+				url: 'articles/:articleId/activities'
 			}
 		});
 	}

@@ -3,36 +3,37 @@
 		<h1>New Article</h1>
 	</div>
 	<div class="col-md-12">
-		<form class="form-horizontal" data-ng-submit="create()" novalidate>
+		<form class="form-horizontal" data-ng-submit="create()" name="article" novalidate>
 			<fieldset>
-				<div class="form-group">
+				<div class="form-group" ng-class="{'has-error': ! article.title.$valid}">
 					<label class="control-label" for="title">Title</label>
 					<div class="controls">
-						<input type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+						<input type="text" data-ng-model="title" name="title" class="form-control" placeholder="Title" required>
 					</div>
+					<span ng-show="article.title.$error.required">The title is required.</span>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="authors">Authors</label>
 					<div class="controls">
-						<input type="text" data-ng-model="authorsCommaSeparated" id="authors" class="form-control" placeholder="Authors" required>
+						<input type="text" data-ng-model="authorsCommaSeparated" id="authors" class="form-control" placeholder="Authors">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="url">Url</label>
 					<div class="controls">
-						<input type="text" data-ng-model="url" id="url" class="form-control" placeholder="Url" required>
+						<input type="text" data-ng-model="url" id="url" class="form-control" placeholder="Url">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="language">Language</label>
 					<div class="controls">
-						<input type="text" data-ng-model="language" id="language" class="form-control" placeholder="Language" required>
+						<input type="text" data-ng-model="language" id="language" class="form-control" placeholder="Language">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="format">Format</label>
 					<div class="controls">
-						<input type="text" data-ng-model="format" id="format" class="form-control" placeholder="Format" required>
+						<input type="text" data-ng-model="format" id="format" class="form-control" placeholder="Format">
 					</div>
 				</div>
 				<div class="form-group">
@@ -41,11 +42,11 @@
 						<textarea data-ng-model="description" id="description" class="form-control" cols="30" rows="10" placeholder="Description"></textarea>
 					</div>
 				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-default">
-				</div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
+				</div>
+				<div class="form-group">
+					<input type="submit" class="btn btn-default">
 				</div>
 			</fieldset>
 		</form>

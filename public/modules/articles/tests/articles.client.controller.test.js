@@ -92,26 +92,43 @@
 			expect(scope.article).toEqualData(sampleArticle);
 		}));
 
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Articles) {
-			// Create a sample article object
-			var sampleArticlePostData = new Articles({
-				title: 'An Article about MEAN',
-				description: 'MEAN rocks!'
-			});
-
-			// Create a sample article response
-			var sampleArticleResponse = new Articles({
-				_id: '525cf20451979dea2c000001',
-				title: 'An Article about MEAN',
-				description: 'MEAN rocks!'
-			});
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Articles, Activities) {
 
 			// Fixture mock form input values
 			scope.title = 'An Article about MEAN';
 			scope.description = 'MEAN rocks!';
 
+			// Create a sample article object
+			var sampleArticlePostData = new Articles({
+				title: scope.title,
+				description: scope.description
+			});
+
+			// Create a sample article response
+			var sampleArticleResponse = new Articles({
+				_id: '525cf20451979dea2c000001',
+				title: scope.title,
+				description: scope.description
+			});
+
+			// Create a sample activity object
+			var sampleActivityPostData = new Activities({
+				story:'undefined vient de capturer une nouvelle fiche intitulée ' + scope.title,
+				action:'article.create',
+				article:sampleArticleResponse._id
+			});
+
+			// Create a sample activity response
+			var sampleActivityResponse = new Activities({
+				_id: '525cf20451979dea2c000002',
+				story:'undefined vient de capturer une nouvelle fiche intitulée ' + scope.title,
+				action:'article.create',
+				article:sampleArticleResponse._id
+			});
+
 			// Set POST response
 			$httpBackend.expectPOST('articles', sampleArticlePostData).respond(sampleArticleResponse);
+			$httpBackend.expectPOST('activities', sampleActivityPostData).respond(sampleActivityResponse);
 
 			// Run controller functionality
 			scope.create();

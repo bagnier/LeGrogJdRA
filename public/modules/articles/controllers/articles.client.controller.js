@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles', 'Activities',
+	function($scope, $stateParams, $location, Authentication, Articles, Activities) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -15,7 +15,19 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
 			});
 			article.$save(function(response) {
-				$location.path('articles/' + response._id);
+				var articleId = response._id;
+				var activity = new Activities ({
+					story: $scope.authentication.user + ' vient de capturer une nouvelle fiche intitulée ' + article.title,
+					action: 'article.create',
+					article: articleId
+				});
+
+				activity.$save(function(response) {
+					$location.path('articles/' + articleId);
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+				});
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

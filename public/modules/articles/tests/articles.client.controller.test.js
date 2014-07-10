@@ -97,6 +97,7 @@
 			// Fixture mock form input values
 			scope.title = 'An Article about MEAN';
 			scope.description = 'MEAN rocks!';
+			scope.authentication.user = {displayName: 'Grognaute'};
 
 			// Create a sample article object
 			var sampleArticlePostData = new Articles({
@@ -113,7 +114,7 @@
 
 			// Create a sample activity object
 			var sampleActivityPostData = new Activities({
-				story:'undefined vient de capturer une nouvelle fiche intitulée ' + scope.title,
+				story:'Grognaute vient de capturer une nouvelle fiche intitulée ' + scope.title,
 				action:'article.create',
 				article:sampleArticleResponse._id
 			});
@@ -121,7 +122,7 @@
 			// Create a sample activity response
 			var sampleActivityResponse = new Activities({
 				_id: '525cf20451979dea2c000002',
-				story:'undefined vient de capturer une nouvelle fiche intitulée ' + scope.title,
+				story:'Grognaute vient de capturer une nouvelle fiche intitulée ' + scope.title,
 				action:'article.create',
 				article:sampleArticleResponse._id
 			});

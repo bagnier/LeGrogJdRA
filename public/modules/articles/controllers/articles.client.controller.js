@@ -17,7 +17,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			article.$save(function(response) {
 				var articleId = response._id;
 				var activity = new Activities ({
-					story: $scope.authentication.user + ' vient de capturer une nouvelle fiche intitulée ' + article.title,
+					story: $scope.authentication.user.displayName + ' vient de capturer une nouvelle fiche intitulée ' + article.title,
 					action: 'article.create',
 					article: articleId
 				});

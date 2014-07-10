@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 data-ng-bind="activity.story"></h1>
 		<p data-ng-bind="activity.action"></p>
-		<p data-ng-bind="activity.article.title"></p>
+		<a data-ng-href="{{'/#!/articles/' + activity.article._id}}" data-ng-bind="activity.article.title"></a>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == activity.user._id">
 		<a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit">

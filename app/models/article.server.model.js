@@ -62,8 +62,10 @@ var ArticleSchema = new Schema({
 ArticleSchema.virtual('authorsCommaSeparated')
 .get(function () {
 	var authorNames = [];
-	for (var i = 0; i < this.authors.length; i++) {
-		authorNames.push(this.authors[i].name);
+	if (this.authors) {
+		for (var i = 0; i < this.authors.length; i++) {
+			authorNames.push(this.authors[i].name);
+		}
 	}
   return authorNames.join(';');
 

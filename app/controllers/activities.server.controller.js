@@ -109,7 +109,7 @@ exports.list = function(req, res) { Activity.find().sort('-created').populate('u
 /**
  * Activity middleware
  */
-exports.activityByID = function(req, res, next, id) { Activity.findById(id).populate('user', 'displayName').exec(function(err, activity) {
+exports.activityByID = function(req, res, next, id) { Activity.findById(id).populate('user', 'displayName').populate('article', 'title').exec(function(err, activity) {
 		if (err) return next(err);
 		if (! activity) return next(new Error('Failed to load Activity ' + id));
 		req.activity = activity ;

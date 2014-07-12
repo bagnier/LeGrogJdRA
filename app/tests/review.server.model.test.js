@@ -7,17 +7,17 @@ var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	Article = mongoose.model('Article'),
-	Activity = mongoose.model('Activity');
+	Review = mongoose.model('Review');
 
 /**
  * Globals
  */
-var user, article, activity;
+var user, article, review;
 
 /**
  * Unit tests
  */
-describe('Activity Model Unit Tests:', function() {
+describe('Review Model Unit Tests:', function() {
 	beforeEach(function(done) {
 		user = new User({
 			firstName: 'Full',
@@ -39,12 +39,17 @@ describe('Activity Model Unit Tests:', function() {
 			user: user
 		});
 
-		user.save(function() {
-			activity = new Activity({
-				story: 'Voila l\'histoire',
-				action: 'CREATE',	   
+		user.save(function() { 
+			review = new Review({
+				comment: 'Review comment',
+				evaluations : {
+					orthographe: true,
+					a: true,
+					b: true,
+					c: false
+				},
 				article: article,
-				user: user		
+				user: user
 			});
 
 			done();
@@ -53,23 +58,23 @@ describe('Activity Model Unit Tests:', function() {
 
 	describe('Method Save', function() {
 		it('should be able to save without problems', function(done) {
-			return activity.save(function(err) {
+			return review.save(function(err) {
 				should.not.exist(err);
 				done();
 			});
 		});
 
-		it('should be able to show an error when try to save without story', function(done) { 
-			activity.story = '';
+		/*it('should be able to show an error when try to save without evaluations', function(done) { 
+			delete activity.evaluations;
 			return activity.save(function(err) {
 				should.exist(err);
 				done();
 			});
-		});
+		});*/
 	});
 
 	afterEach(function(done) { 
-		Activity.remove().exec();
+		Review.remove().exec();
 		User.remove().exec();
 
 		done();

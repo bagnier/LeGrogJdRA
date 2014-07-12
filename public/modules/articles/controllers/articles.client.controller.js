@@ -38,7 +38,6 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			this.description = '';
 			this.language = '';
 			this.authorsCommaSeparated = '';
-
 		};
 
 		$scope.remove = function(article) {
@@ -85,6 +84,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.findOneArticleAndRelatedActivities = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId
+			}, function() {
+				$scope.article.noUrl = (!$scope.article.url) || ($scope.article.url === 'NULL');
 			});
 			$scope.activities = Articles.findActivities({
 				articleId: $stateParams.articleId

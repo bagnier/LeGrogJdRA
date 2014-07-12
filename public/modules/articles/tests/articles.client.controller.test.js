@@ -101,6 +101,12 @@
 				description: 'MEAN rocks!'
 			});
 
+			var responseArticle = new Articles({
+				title: 'An Article about MEAN',
+				description: 'MEAN rocks!',
+				noUrl: true
+			});
+
 			// Set the URL parameter
 			$stateParams.articleId = '525a8422f6d0f87f0e407a33';
 
@@ -128,7 +134,7 @@
 			$httpBackend.flush();
 
 			// Test scope value
-			expect(scope.article).toEqualData(sampleArticle);
+			expect(scope.article).toEqualData(responseArticle);
 			expect(scope.activities).toEqualData(sampleActivities);
 		}));
 

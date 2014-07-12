@@ -33,7 +33,10 @@
   		</span>
   	</div>
   	<p class="">Langue : <span data-ng-bind="article.language"></span></p>
-  	<p class="">Adresse : <a data-ng-href="{{article.url}}" data-ng-bind="article.url"></a></p>
+  	<p class="">Adresse :
+  		<a data-ng-href="{{article.url}}" class="label label-primary">page du jeu</a>
+  		<a data-ng-href="http://web.archive.org/web/*/{{article.url}}" class="label label-default">archive</a>
+  	</p>
   	<p class="">Format : <span data-ng-bind-html="article.format"></span></p>
   	<p class="lead" data-ng-bind-html="article.description"></p>
   	<hr>

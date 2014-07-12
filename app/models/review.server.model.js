@@ -18,19 +18,19 @@ var ReviewSchema = new Schema({
 		trim: true
 	},
 	evaluations: {
-		orthographe: {
+		spelling: {
 			type: Boolean,
 			default: false
 		},
-		a: {
+		content: {
 			type: Boolean,
 			default: false
 		},
-		b: {
+		shape: {
 			type: Boolean,
 			default: false
 		},
-		c: {
+		neutrality: {
 			type: Boolean,
 			default: false
 		}

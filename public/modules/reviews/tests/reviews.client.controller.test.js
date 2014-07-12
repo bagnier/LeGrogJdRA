@@ -55,10 +55,10 @@
 			var sampleReview = new Reviews({
 				comment: 'New Review',
 				evaluations: {
-					orthographe: true,
-					a: true,
-					b: true,
-					c: false
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
 				}
 			});
 
@@ -81,10 +81,10 @@
 			var sampleReview = new Reviews({
 				comment: 'New Review',
 				evaluations: {
-					orthographe: true,
-					a: true,
-					b: true,
-					c: false
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
 				}
 			});
 
@@ -107,10 +107,10 @@
 			var sampleReviewPostData = new Reviews({
 				comment: 'New Review',
 				evaluations: {
-					orthographe: true,
-					a: true,
-					b: true,
-					c: false
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
 				}
 			});
 
@@ -119,20 +119,20 @@
 				_id: '525cf20451979dea2c000001',
 				comment: 'New Review',
 				evaluations: {
-					orthographe: true,
-					a: true,
-					b: true,
-					c: false
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
 				}
 			});
 
 			// Fixture mock form input values
 			scope.comment = 'New Review';
 			scope.evaluations = {
-				orthographe: true,
-				a: true,
-				b: true,
-				c: false
+				spelling: true,
+				content: true,
+				shape: true,
+				neutrality: false
 			};
 
 			// Set POST response
@@ -155,10 +155,10 @@
 				_id: '525cf20451979dea2c000001',
 				comment: 'New Review',
 				evaluations: {
-					orthographe: true,
-					a: true,
-					b: true,
-					c: false
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
 				}
 			});
 

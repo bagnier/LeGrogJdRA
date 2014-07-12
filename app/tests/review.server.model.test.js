@@ -43,10 +43,10 @@ describe('Review Model Unit Tests:', function() {
 			review = new Review({
 				comment: 'Review comment',
 				evaluations : {
-					orthographe: true,
-					a: true,
-					b: true,
-					c: false
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
 				},
 				article: article,
 				user: user

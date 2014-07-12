@@ -23,7 +23,7 @@
 	<div>
 		Auteurs :
 		<span data-ng-repeat="author in article.authors">
-			<a href="{{author.url}}" class="label label-warning">{{author.name}}</a>
+			<a href="{{author.url}}" class="label label-warning" target="_blank">{{author.name}}</a>
   		</span>
 	</div>
 	<div>
@@ -34,8 +34,8 @@
   	</div>
   	<p class="">Langue : <span data-ng-bind="article.language"></span></p>
   	<p class="">Adresse :
-  		<a data-ng-href="{{article.url}}" class="label label-primary">page du jeu</a>
-  		<a data-ng-href="http://web.archive.org/web/*/{{article.url}}" class="label label-default">archive</a>
+  		<a data-ng-href="{{article.url}}" class="label label-primary" target="_blank">page du jeu</a>
+  		<a data-ng-href="http://web.archive.org/web/*/{{article.url}}" class="label label-default" target="_blank">archive</a>
   	</p>
   	<p class="">Format : <span data-ng-bind-html="article.format"></span></p>
   	<p class="lead" data-ng-bind-html="article.description"></p>

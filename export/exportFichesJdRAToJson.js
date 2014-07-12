@@ -7,7 +7,7 @@ fiches
 
 select ja.id_jeu as game_id, ja.lib_jeu as title, ja.url as url, ja.format as format, ja.descr_gamme as description, t1.lib_theme as "*array*tag", t2.lib_theme as "*array*tag", l.lib_langue as language from jeux_amateurs ja LEFT JOIN theme t1 on ja.id_theme1=t1.id_theme LEFT JOIN theme t2 on ja.id_theme2=t2.id_theme LEFT JOIN langue l on ja.id_langue=l.id_langue where ja.ind_visible=1;
 
-game_id,title,url,format,description,*array*tag,*array*tag,language
+game_id,title,url,format,description,*array*tags,*array*tags,language
 
 
 auteurs

@@ -13,9 +13,15 @@
 					<span ng-show="article.title.$error.required">The title is required.</span>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="authors">Authors</label>
+					<label class="control-label" for="authors">Authors (séparés d'un point virgule)</label>
 					<div class="controls">
 						<input type="text" data-ng-model="authorsCommaSeparated" id="authors" class="form-control" placeholder="Authors">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label" for="tags">Tags (séparés d'un point virgule)</label>
+					<div class="controls">
+						<input type="text" data-ng-model="tagsCommaSeparated" id="tags" class="form-control" placeholder="Tags">
 					</div>
 				</div>
 				<div class="form-group">

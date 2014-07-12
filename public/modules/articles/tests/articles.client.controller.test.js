@@ -75,7 +75,9 @@
 			// Define a sample article object
 			var sampleArticle = new Articles({
 				title: 'An Article about MEAN',
-				description: 'MEAN rocks!'
+				description: 'MEAN rocks!',
+				tags: ['oui', 'non'],
+				tagsCommaSeparated : 'oui;non'
 			});
 
 			// Set the URL parameter
@@ -135,19 +137,22 @@
 			// Fixture mock form input values
 			scope.title = 'An Article about MEAN';
 			scope.description = 'MEAN rocks!';
+			scope.tagsCommaSeparated = 'oui;non';
 			scope.authentication.user = {displayName: 'Grognaute'};
 
 			// Create a sample article object
 			var sampleArticlePostData = new Articles({
 				title: scope.title,
-				description: scope.description
+				description: scope.description,
+				tags: ['oui', 'non']
 			});
 
 			// Create a sample article response
 			var sampleArticleResponse = new Articles({
 				_id: '525cf20451979dea2c000001',
 				title: scope.title,
-				description: scope.description
+				description: scope.description,
+				tags: ['oui', 'non']
 			});
 
 			// Create a sample activity object
@@ -186,11 +191,13 @@
 			var sampleArticlePutData = new Articles({
 				_id: '525cf20451979dea2c000001',
 				title: 'An Article about MEAN',
-				description: 'MEAN Rocks!'
+				description: 'MEAN Rocks!',
+				tags: ['oui', 'non']
 			});
 
 			// Mock article in scope
 			scope.article = sampleArticlePutData;
+			scope.article.tagsCommaSeparated = 'oui;non';
 
 			// Set PUT response
 			$httpBackend.expectPUT(/articles\/([0-9a-fA-F]{24})$/).respond();

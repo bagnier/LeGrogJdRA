@@ -10,21 +10,33 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="article.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="article.user.displayName"></span>
-		</em>
-	</small>
-	<ul>
-  		<li data-ng-repeat="author in article.authors"><a href="{{author.url}}">{{author.name}}</a></li>
-  	</ul>
-  	<p class="" data-ng-bind="article.url"></p>
-  	<p class="" data-ng-bind-html="article.format"></p>
-  	<p class="" data-ng-bind="article.language"></p>
+	<div>
+		<small>
+			<em class="text-muted">
+				Posted on
+				<span data-ng-bind="article.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="article.user.displayName"></span>
+			</em>
+		</small>
+	</div>
+	<div>
+		Auteurs :
+		<span data-ng-repeat="author in article.authors">
+			<a href="{{author.url}}" class="label label-warning">{{author.name}}</a>
+  		</span>
+	</div>
+	<div>
+  		Tags :
+		<span data-ng-repeat="tag in article.tags">
+			<span class="label label-info">{{tag}}</span>
+  		</span>
+  	</div>
+  	<p class="">Langue : <span data-ng-bind="article.language"></span></p>
+  	<p class="">Adresse : <a data-ng-href="{{article.url}}" data-ng-bind="article.url"></a></p>
+  	<p class="">Format : <span data-ng-bind-html="article.format"></span></p>
   	<p class="lead" data-ng-bind-html="article.description"></p>
+  	<hr>
   	<ul>
   		<li data-ng-repeat="activity in activities">{{activity.story}}</li>
   	</ul>

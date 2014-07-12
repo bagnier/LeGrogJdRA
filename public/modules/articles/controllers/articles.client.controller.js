@@ -11,8 +11,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				format: this.format,
 				description: this.description,
 				language: this.language,
-				authorsCommaSeparated: this.authorsCommaSeparated
-
+				authorsCommaSeparated: this.authorsCommaSeparated,
+				tags: this.tagsCommaSeparated.split(';')
 			});
 			article.$save(function(response) {
 				var articleId = response._id;
@@ -59,6 +59,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 
 		$scope.update = function() {
 			var article = $scope.article;
+			article.tags = article.tagsCommaSeparated.split(';');
+			delete article.tagsCommaSeparated;
 
 			article.$update(function() {
 				$location.path('articles/' + article._id);
@@ -74,6 +76,9 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.findOne = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId
+			}, function() {
+				if ($scope.article.tags) 
+					$scope.article.tagsCommaSeparated = $scope.article.tags.join(';');
 			});
 		};
 

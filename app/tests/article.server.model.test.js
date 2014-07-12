@@ -33,6 +33,7 @@ describe('Article Model Unit Tests:', function() {
 				content: 'Article Content',
 				url: 'Article Url',
 				authors: [{name:'Franck Lloyd Wright', url:''}, {name:'Rem Koolhaas', url:''}, {name:'Ludwig Mies Van Der Rohe', url:''}],
+				tags: ['grand', 'beau'],
 				format: 'Article Format',
 				description:  'Article Description',
 				language:  'Article Language',

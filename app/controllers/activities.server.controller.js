@@ -96,7 +96,7 @@ exports.delete = function(req, res) {
  * List of Activities
  */
 exports.list = function(req, res) { 
-	Activity.find().sort('-created').populate('user', 'displayName').exec(function(err, activities) {
+	Activity.find().sort('-created').populate('user', 'displayName').populate('article', 'title').exec(function(err, activities) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)

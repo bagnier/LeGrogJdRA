@@ -113,17 +113,19 @@
 			var sampleActivities = [
 				{
 					_id: '525cf20451979dea2c000002',
-					story:'Grognaute vient de capturer une nouvelle fiche intitulée An Article about MEAN',
+					story:' vient de capturer la nouvelle fiche ',
 					action:'article.create',
 					article:$stateParams.articleId
 				},
 				{
 					_id: '525cf20451979dea2c000003',
-					story:'Grognaute vient de capturer une nouvelle fiche intitulée An Article about MEAN',
+					story:' vient de capturer la nouvelle fiche ',
 					action:'article.create',
 					article:$stateParams.articleId
 				},
 			];
+
+
 
 			// Set GET response
 			$httpBackend.expectGET('articles/' + $stateParams.articleId).respond(sampleArticle);
@@ -138,13 +140,20 @@
 			expect(scope.activities).toEqualData(sampleActivities);
 		}));
 
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Articles, Activities) {
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Articles, Activities, Reviews) {
 
 			// Fixture mock form input values
 			scope.title = 'An Article about MEAN';
 			scope.description = 'MEAN rocks!';
 			scope.tagsCommaSeparated = 'oui;non';
 			scope.authentication.user = {displayName: 'Grognaute'};
+			scope.comment = 'New Review';
+			scope.evaluations = {
+				spelling: true,
+				content: true,
+				shape: true,
+				neutrality: false
+			};
 
 			// Create a sample article object
 			var sampleArticlePostData = new Articles({
@@ -163,7 +172,7 @@
 
 			// Create a sample activity object
 			var sampleActivityPostData = new Activities({
-				story:'Grognaute vient de capturer une nouvelle fiche intitulée ' + scope.title,
+				story:' vient de capturer la nouvelle fiche ',
 				action:'article.create',
 				article:sampleArticleResponse._id
 			});
@@ -171,14 +180,40 @@
 			// Create a sample activity response
 			var sampleActivityResponse = new Activities({
 				_id: '525cf20451979dea2c000002',
-				story:'Grognaute vient de capturer une nouvelle fiche intitulée ' + scope.title,
+				story:' vient de capturer la nouvelle fiche ',
 				action:'article.create',
+				article:sampleArticleResponse._id
+			});
+
+			// Create a sample review object
+			var sampleReviewPostData = new Reviews({
+				comment: 'New Review',
+				evaluations: {
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
+				},
+				article:sampleArticleResponse._id
+			});
+
+			// Create a sample review response
+			var sampleReviewResponse = new Reviews({
+				_id: '525cf20451979dea2c000003',
+				comment: 'New Review',
+				evaluations: {
+					spelling: true,
+					content: true,
+					shape: true,
+					neutrality: false
+				},
 				article:sampleArticleResponse._id
 			});
 
 			// Set POST response
 			$httpBackend.expectPOST('articles', sampleArticlePostData).respond(sampleArticleResponse);
 			$httpBackend.expectPOST('activities', sampleActivityPostData).respond(sampleActivityResponse);
+			$httpBackend.expectPOST('reviews', sampleReviewPostData).respond(sampleReviewResponse);
 
 			// Run controller functionality
 			scope.create();

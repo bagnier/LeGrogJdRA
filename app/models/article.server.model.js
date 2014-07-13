@@ -73,7 +73,6 @@ ArticleSchema.virtual('authorsCommaSeparated')
 		}
 	}
   return authorNames.join(';');
-
 })
 .set(function (authorsCommaSeparated) {
   	var authorNames = authorsCommaSeparated.split(';');

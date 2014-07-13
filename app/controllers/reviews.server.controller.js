@@ -95,7 +95,8 @@ exports.delete = function(req, res) {
 /**
  * List of Reviews
  */
-exports.list = function(req, res) { Review.find().sort('-created').populate('user', 'displayName').exec(function(err, reviews) {
+exports.list = function(req, res) { 
+	Review.find().sort('-created').populate('user', 'displayName').populate('article', 'title').exec(function(err, reviews) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)
@@ -109,7 +110,8 @@ exports.list = function(req, res) { Review.find().sort('-created').populate('use
 /**
  * Review middleware
  */
-exports.reviewByID = function(req, res, next, id) { Review.findById(id).populate('user', 'displayName').exec(function(err, review) {
+exports.reviewByID = function(req, res, next, id) { 
+	Review.findById(id).populate('user', 'displayName').populate('article', 'title').exec(function(err, review) {
 		if (err) return next(err);
 		if (! review) return next(new Error('Failed to load Review ' + id));
 		req.review = review ;

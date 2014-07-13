@@ -4,20 +4,63 @@
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="comment">Comment</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="comment" id="comment" class="form-control" placeholder="Comment" required>
-                    </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="spelling">Orthographe</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(evaluations.spelling) ? 'btn-primary' : 'btn-default'" id="spelling" ng-click="evaluations.spelling = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(evaluations.spelling) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.spelling = false">Non</button>
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-default">
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.spelling"></span>
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="content">Contenu</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(evaluations.content) ? 'btn-primary' : 'btn-default'" id="content" ng-click="evaluations.content = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(evaluations.content) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.content = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.content"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="shape">Forme</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(evaluations.shape) ? 'btn-primary' : 'btn-default'" id="shape" ng-click="evaluations.shape = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(evaluations.shape) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.shape = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.shape"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="neutrality">Neutralité</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(evaluations.neutrality) ? 'btn-primary' : 'btn-default'" id="neutrality" ng-click="evaluations.neutrality = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(evaluations.neutrality) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.neutrality = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.neutrality"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="comment">Comment</label>
+                <div class="col-md-10">
+                    <input type="textarea" data-ng-model="comment" id="comment" class="form-control" placeholder="Comment" required>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-10 form-group">
+                <input type="submit" class="btn btn-default">
+            </div>
+			<div data-ng-show="error" class="text-danger">
+				<strong data-ng-bind="error"></strong>
+			</div>
         </form>
     </div>
 </section>

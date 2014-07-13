@@ -10,7 +10,22 @@
 				by
 				<span data-ng-bind="review.user.displayName"></span>
 			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="review.comment"></h4>
+            <h4 class="list-group-item-heading">
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.spelling"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.spelling"></span>
+                Orthographe - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.content"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.content"></span>
+                Contenu - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.shape"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.shape"></span>
+                Forme - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.neutrality"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.neutrality"></span>
+                Neutralité
+            </h4>
+			<p data-ng-bind="review.comment"></p>
+            <p data-ng-bind="review.article.title"></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-hide="!reviews.$resolved || reviews.length">

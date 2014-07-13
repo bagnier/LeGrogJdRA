@@ -4,10 +4,53 @@
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
-            <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="comment">Comment</label>
-                    <div class="controls">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="spelling">Orthographe</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(review.evaluations.spelling) ? 'btn-primary' : 'btn-default'" id="spelling" ng-click="review.evaluations.spelling = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(review.evaluations.spelling) ? 'btn-default' : 'btn-primary'" ng-click="review.evaluations.spelling = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.spelling"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="content">Contenu</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(review.evaluations.content) ? 'btn-primary' : 'btn-default'" id="content" ng-click="review.evaluations.content = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(review.evaluations.content) ? 'btn-default' : 'btn-primary'" ng-click="review.evaluations.content = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.content"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="shape">Forme</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(review.evaluations.shape) ? 'btn-primary' : 'btn-default'" id="shape" ng-click="review.evaluations.shape = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(review.evaluations.shape) ? 'btn-default' : 'btn-primary'" ng-click="review.evaluations.shape = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.shape"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="neutrality">Neutralité</label>
+                <div class="col-md-2 btn-group">
+                    <button type="button" class="btn" ng-class="(review.evaluations.neutrality) ? 'btn-primary' : 'btn-default'" id="neutrality" ng-click="review.evaluations.neutrality = true">Oui</button>
+                    <button type="button" class="btn" ng-class="(review.evaluations.neutrality) ? 'btn-default' : 'btn-primary'" ng-click="review.evaluations.neutrality = false">Non</button>
+                </div>
+                <div>
+                    <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.neutrality"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="comment">Comment</label>
+                <div class="col-md-10">
                         <input type="text" data-ng-model="review.comment" id="comment" class="form-control" placeholder="Comment" required>
                     </div>
                 </div>

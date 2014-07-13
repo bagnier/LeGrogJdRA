@@ -43,7 +43,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			article.$save(function(response) {
 				var articleId = response._id;
 				var activity = new Activities ({
-					story: ' vient de capturer la nouvelle fiche ',
+					story: 'vient de capturer la nouvelle fiche',
 					action: 'article.create',
 					article: articleId
 				});

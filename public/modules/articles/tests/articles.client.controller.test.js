@@ -113,13 +113,13 @@
 			var sampleActivities = [
 				{
 					_id: '525cf20451979dea2c000002',
-					story:' vient de capturer la nouvelle fiche ',
+					story:'vient de capturer la nouvelle fiche',
 					action:'article.create',
 					article:$stateParams.articleId
 				},
 				{
 					_id: '525cf20451979dea2c000003',
-					story:' vient de capturer la nouvelle fiche ',
+					story:'vient de capturer la nouvelle fiche',
 					action:'article.create',
 					article:$stateParams.articleId
 				},
@@ -172,7 +172,7 @@
 
 			// Create a sample activity object
 			var sampleActivityPostData = new Activities({
-				story:' vient de capturer la nouvelle fiche ',
+				story:'vient de capturer la nouvelle fiche',
 				action:'article.create',
 				article:sampleArticleResponse._id
 			});
@@ -180,7 +180,7 @@
 			// Create a sample activity response
 			var sampleActivityResponse = new Activities({
 				_id: '525cf20451979dea2c000002',
-				story:' vient de capturer la nouvelle fiche ',
+				story:'vient de capturer la nouvelle fiche',
 				action:'article.create',
 				article:sampleArticleResponse._id
 			});

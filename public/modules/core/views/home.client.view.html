@@ -8,7 +8,7 @@
 		   <a class="btn btn-primary btn-lg" data-ng-hide="authentication.user" role="button" href="/#!/signin">Créer une fiche</a></p>
 		<p>Les dernières activités :<p>
 		<div class="list-group">
-			<p data-ng-repeat="activity in activities"><a class="list-group-item" href="#!/activities/{{activity._id}}">{{activity.story}}</a></p>
+			<p data-ng-repeat="activity in activities"><a class="list-group-item" href="#!/articles/{{activity.article._id}}">{{activity.user.displayName}} {{activity.story}} {{activity.article.title}}</a></p>
 		</div>
 	</div>
 </section>

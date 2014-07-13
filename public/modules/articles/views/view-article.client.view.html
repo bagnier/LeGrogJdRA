@@ -40,7 +40,7 @@
   	<p class="">Format : <span data-ng-bind-html="article.format"></span></p>
   	<p class="lead" data-ng-bind-html="article.description"></p>
   	<hr>
-  	<ul>
-  		<li data-ng-repeat="activity in activities">{{activity.story}}</li>
+  	<ul class="list-group">
+  		<p data-ng-repeat="activity in activities"><a class="list-group-item" href="#!/articles/{{activity.article._id}}">{{activity.user.displayName}} {{activity.story}} {{activity.article.title}}</a></p>
   	</ul>
 </section>

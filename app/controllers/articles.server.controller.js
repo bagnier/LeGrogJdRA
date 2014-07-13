@@ -112,7 +112,7 @@ exports.list = function(req, res) {
  * List of Activities related to an article
  */
 exports.activities = function(req, res) {
-	Activity.find({article: req.article._id}).sort('-created').populate('user', 'displayName').exec(function(err, activities) {
+	Activity.find({article: req.article._id}).sort('-created').populate('user', 'displayName').populate('article', 'title').exec(function(err, activities) {
 		if (err) {
 			return res.send(400, {
 				message: getErrorMessage(err)

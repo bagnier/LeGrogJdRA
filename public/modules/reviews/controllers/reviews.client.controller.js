@@ -1,9 +1,20 @@
 'use strict';
 
 // Reviews controller
-angular.module('reviews').controller('ReviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Reviews',
-	function($scope, $stateParams, $location, Authentication, Reviews ) {
+angular.module('reviews').controller('ReviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Reviews', 'Articles',
+	function($scope, $stateParams, $location, Authentication, Reviews, Articles ) {
 		$scope.authentication = Authentication;
+
+		$scope.initFromArticle = function() {
+			var searchObject = $location.search();
+			var id = searchObject.articleId;
+
+			$scope.prerender = Articles.get({
+				articleId: id
+			}, function() {
+				$scope.prerender.noUrl = ($scope.url !== '');
+			});
+		};
 
 		// Create new Review
 		$scope.create = function() {
@@ -21,8 +32,8 @@ angular.module('reviews').controller('ReviewsController', ['$scope', '$statePara
 			});
 
 			// Clear form fields
-			this.comment = '';
-			this.evaluations = {};
+			//this.comment = '';
+			//this.evaluations = {};
 		};
 
 		// Remove existing Review

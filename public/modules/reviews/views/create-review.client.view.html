@@ -1,6 +1,33 @@
-<section data-ng-controller="ReviewsController">
+<section data-ng-controller="ReviewsController" data-ng-init="initFromArticle()">
     <div class="page-header">
         <h1>New Review</h1>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Aperçu</h3>
+        </div>
+        <div class="panel-body">
+            <h1 data-ng-bind="prerender.title"></h1>
+            <div>
+                Auteurs :
+                <span data-ng-repeat="author in prerender.authors">
+                    <span class="label label-warning" target="_blank">{{author.name}}</span>
+                </span>
+            </div>
+            <div>
+                Tags :
+                <span data-ng-repeat="tag in prerender.tags">
+                    <span class="label label-info">{{tag}}</span>
+                </span>
+            </div>
+            <p class="">Langue : <span data-ng-bind="prerender.language"></span></p>
+            <p class="" ng-hide="prerender.noUrl">Adresse :
+                <span class="label label-default">page du jeu</span>
+                <span class="label label-default">archive</span>
+            </p>
+            <p class="">Format : <span data-ng-bind-html="prerender.format"></span></p>
+            <p class="lead" data-ng-bind-html="prerender.description"></p>
+        </div>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
@@ -11,6 +38,7 @@
                     <button type="button" class="btn" ng-class="(evaluations.spelling) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.spelling = false">Non</button>
                 </div>
                 <div>
+                    <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.spelling"></span>
                     <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.spelling"></span>
                 </div>
             </div>
@@ -22,6 +50,7 @@
                     <button type="button" class="btn" ng-class="(evaluations.content) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.content = false">Non</button>
                 </div>
                 <div>
+                    <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.content"></span>
                     <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.content"></span>
                 </div>
             </div>
@@ -33,6 +62,7 @@
                     <button type="button" class="btn" ng-class="(evaluations.shape) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.shape = false">Non</button>
                 </div>
                 <div>
+                    <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.shape"></span>
                     <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.shape"></span>
                 </div>
             </div>
@@ -44,6 +74,7 @@
                     <button type="button" class="btn" ng-class="(evaluations.neutrality) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.neutrality = false">Non</button>
                 </div>
                 <div>
+                    <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.neutrality"></span>
                     <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.neutrality"></span>
                 </div>
             </div>
@@ -51,16 +82,16 @@
             <div class="form-group">
                 <label class="col-md-2 control-label" for="comment">Comment</label>
                 <div class="col-md-10">
-                    <input type="textarea" data-ng-model="comment" id="comment" class="form-control" placeholder="Comment" required>
+                    <textarea data-ng-model="comment" id="comment" class="form-control" placeholder="Comment" required></textarea>
                 </div>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-10 form-group">
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
                 <input type="submit" class="btn btn-default">
             </div>
-			<div data-ng-show="error" class="text-danger">
-				<strong data-ng-bind="error"></strong>
-			</div>
         </form>
     </div>
 </section>

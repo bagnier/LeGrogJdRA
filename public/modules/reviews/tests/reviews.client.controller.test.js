@@ -102,7 +102,9 @@
 			expect(scope.review).toEqualData(sampleReview);
 		}));
 
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Reviews) {
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Reviews, Activities) {
+			scope.articleId = '525cf20451979dea2c000002';
+
 			// Create a sample Review object
 			var sampleReviewPostData = new Reviews({
 				comment: 'New Review',
@@ -111,7 +113,8 @@
 					content: true,
 					shape: true,
 					neutrality: false
-				}
+				},
+				article:scope.articleId
 			});
 
 			// Create a sample Review response
@@ -123,7 +126,23 @@
 					content: true,
 					shape: true,
 					neutrality: false
-				}
+				},
+				article:scope.articleId
+			});
+
+			// Create a sample activity object
+			var sampleActivityPostData = new Activities({
+				story:'vient de commenter la nouvelle fiche',
+				action:'article.review',
+				article:scope.articleId
+			});
+
+			// Create a sample activity response
+			var sampleActivityResponse = new Activities({
+				_id: '525cf20451979dea2c000002',
+				story:'vient de commenter la nouvelle fiche',
+				action:'article.review',
+				article:scope.articleId
 			});
 
 			// Fixture mock form input values
@@ -137,16 +156,17 @@
 
 			// Set POST response
 			$httpBackend.expectPOST('reviews', sampleReviewPostData).respond(sampleReviewResponse);
+			$httpBackend.expectPOST('activities', sampleActivityPostData).respond(sampleActivityResponse);
 
 			// Run controller functionality
 			scope.create();
 			$httpBackend.flush();
 
 			// Test form inputs are reset
-			expect(scope.comment).toEqual('');
+			//expect(scope.comment).toEqual('');
 
 			// Test URL redirection after the Review was created
-			expect($location.path()).toBe('/reviews/' + sampleReviewResponse._id);
+			expect($location.path()).toBe('/articles/' + scope.articleId);
 		}));
 
 		it('$scope.update() should update a valid Review', inject(function(Reviews) {

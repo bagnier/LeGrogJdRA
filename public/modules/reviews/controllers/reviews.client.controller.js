@@ -1,16 +1,16 @@
 'use strict';
 
 // Reviews controller
-angular.module('reviews').controller('ReviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Reviews', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Reviews, Articles ) {
+angular.module('reviews').controller('ReviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Reviews', 'Articles', 'Activities',
+	function($scope, $stateParams, $location, Authentication, Reviews, Articles, Activities ) {
 		$scope.authentication = Authentication;
 
 		$scope.initFromArticle = function() {
 			var searchObject = $location.search();
-			var id = searchObject.articleId;
+			$scope.articleId = searchObject.articleId;
 
 			$scope.prerender = Articles.get({
-				articleId: id
+				articleId: $scope.articleId
 			}, function() {
 				$scope.prerender.noUrl = ($scope.url !== '');
 			});
@@ -21,12 +21,23 @@ angular.module('reviews').controller('ReviewsController', ['$scope', '$statePara
 			// Create new Review object
 			var review = new Reviews ({
 				comment: this.comment,
-				evaluations: this.evaluations
+				evaluations: this.evaluations,
+				article: $scope.articleId
 			});
 
 			// Redirect after save
 			review.$save(function(response) {
-				$location.path('reviews/' + response._id);
+				var activity = new Activities ({
+					story: 'vient de commenter la nouvelle fiche',
+					action: 'article.review',
+					article: $scope.articleId
+				});
+
+				activity.$save(function(response) {
+					$location.path('articles/' + $scope.articleId);
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+				});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -75,4 +86,4 @@ angular.module('reviews').controller('ReviewsController', ['$scope', '$statePara
 			});
 		};
 	}
-]);
+	]);

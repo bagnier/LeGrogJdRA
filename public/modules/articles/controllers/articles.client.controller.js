@@ -118,13 +118,16 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			});
 		};
 
-		$scope.findOneArticleAndRelatedActivities = function() {
+		$scope.findOneArticleAndRelated = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId
 			}, function() {
 				$scope.article.noUrl = (!$scope.article.url) || ($scope.article.url === 'NULL');
 			});
 			$scope.activities = Articles.findActivities({
+				articleId: $stateParams.articleId
+			});
+			$scope.reviews = Articles.findReviews({
 				articleId: $stateParams.articleId
 			});
 		};

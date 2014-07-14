@@ -94,7 +94,7 @@
 			expect(scope.article).toEqualData(sampleArticle);
 		}));
 
-		it('$scope.findOneArticleAndRelatedActivities() should create an array with one article object fetched from XHR using a articleId URL parameter', inject(function(Articles, Activities) {
+		it('$scope.findOneArticleAndRelated() should create an array with one article object fetched from XHR using a articleId URL parameter', inject(function(Articles, Activities) {
 			// Define a sample article object
 			var sampleArticle = new Articles({
 				title: 'An Article about MEAN',
@@ -119,20 +119,44 @@
 				},
 				{
 					_id: '525cf20451979dea2c000003',
-					story:'vient de capturer la nouvelle fiche',
+					story:'vient de commenter la fiche',
 					action:'article.create',
 					article:$stateParams.articleId
 				},
 			];
 
+			var sampleReviewes = [
+				{
+					_id: '525cf20451979dea2c000004',
+					comment: 'New Review',
+					evaluations: {
+						spelling: true,
+						content: true,
+						shape: true,
+						neutrality: false
+					},
+					article:$stateParams.articleId
+				},
+				{
+					_id: '525cf20451979dea2c000005',
+					comment: 'New Review',
+					evaluations: {
+						spelling: true,
+						content: true,
+						shape: true,
+						neutrality: false
+					},
+					article:$stateParams.articleId
+				}];
 
 
 			// Set GET response
 			$httpBackend.expectGET('articles/' + $stateParams.articleId).respond(sampleArticle);
 			$httpBackend.expectGET('articles/' + $stateParams.articleId + '/activities').respond(sampleActivities);
+			$httpBackend.expectGET('articles/' + $stateParams.articleId + '/reviews').respond(sampleReviewes);
 
 			// Run controller functionality
-			scope.findOneArticleAndRelatedActivities();
+			scope.findOneArticleAndRelated();
 			$httpBackend.flush();
 
 			// Test scope value

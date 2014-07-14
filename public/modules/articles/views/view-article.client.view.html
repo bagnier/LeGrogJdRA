@@ -1,4 +1,4 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOneArticleAndRelatedActivities()">
+<section data-ng-controller="ArticlesController" data-ng-init="findOneArticleAndRelated()">
 	<div class="page-header">
 		<h1 data-ng-bind="article.title"></h1>
 	</div>
@@ -48,4 +48,31 @@
   	<ul class="list-group">
   		<p data-ng-repeat="activity in activities"><a class="list-group-item" href="#!/articles/{{activity.article._id}}">{{activity.user.displayName}} {{activity.story}} {{activity.article.title}}</a></p>
   	</ul>
+  	<hr>
+  	<div class="list-group">
+        <a data-ng-repeat="review in reviews" data-ng-href="#!/reviews/{{review._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="review.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="review.user.displayName"></span>
+			</small>
+            <h4 class="list-group-item-heading">
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.spelling"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.spelling"></span>
+                Orthographe - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.content"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.content"></span>
+                Contenu - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.shape"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.shape"></span>
+                Forme - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.neutrality"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.neutrality"></span>
+                Neutralité
+            </h4>
+			<p data-ng-bind="review.comment"></p>
+            <p data-ng-bind="review.article.title"></p>
+        </a>
+    </div>
 </section>

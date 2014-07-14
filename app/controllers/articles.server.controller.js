@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	Article = mongoose.model('Article'),
 	Activity = mongoose.model('Activity'),
+	Review = mongoose.model('Review'),
 	_ = require('lodash');
 
 /**
@@ -119,6 +120,21 @@ exports.activities = function(req, res) {
 			});
 		} else {
 			res.jsonp(activities);
+		}
+	});
+};
+
+/**
+ * List of Reviews related to an article
+ */
+exports.reviews = function(req, res) {
+	Review.find({article: req.article._id}).sort('-created').populate('user', 'displayName').populate('article', 'title').exec(function(err, reviews) {
+		if (err) {
+			return res.send(400, {
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(reviews);
 		}
 	});
 };

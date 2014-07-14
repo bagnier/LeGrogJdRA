@@ -13,6 +13,11 @@ angular.module('articles').factory('Articles', ['$resource',
 				method: 'GET',
 				isArray: true,
 				url: 'articles/:articleId/activities'
+			},
+			findReviews: {
+				method: 'GET',
+				isArray: true,
+				url: 'articles/:articleId/reviews'
 			}
 		});
 	}

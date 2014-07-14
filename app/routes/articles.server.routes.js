@@ -15,6 +15,7 @@ module.exports = function(app) {
 	app.route('/articles/:articleId')
 		.get(articles.read)
 		.put(users.requiresLogin, articles.hasAuthorization, articles.update)
+		.post(users.requiresLogin, articles.newVersion)
 		.delete(users.requiresLogin, articles.hasAuthorization, articles.delete);
 
 	app.route('/articles/:articleId/activities')

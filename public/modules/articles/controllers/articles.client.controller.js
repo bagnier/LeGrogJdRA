@@ -118,6 +118,25 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			});
 		};
 
+		$scope.findOneForVersion = function() {
+			if ($stateParams.articleId) {
+				var article = Articles.get({
+					articleId: $stateParams.articleId
+				}, function() {
+					if ($scope.article.tags) 
+						$scope.article.tagsCommaSeparated = $scope.article.tags.join(';');
+					$scope.title = article.title;
+					$scope.authorsCommaSeparated = article.authorsCommaSeparated;
+					$scope.tagsCommaSeparated = article.tags ? article.tags.join(';') : '';
+					$scope.url = article.url;
+					$scope.language = article.language;
+					$scope.format = article.format;
+					$scope.description = article.description;
+				});
+			}
+			$scope.comment = $location.search().comment;
+		};
+
 		$scope.findOneArticleAndRelated = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId

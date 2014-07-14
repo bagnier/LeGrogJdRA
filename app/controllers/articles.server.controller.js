@@ -52,6 +52,24 @@ exports.create = function(req, res) {
 };
 
 /**
+ * Create a new version of an article
+ */
+exports.newVersion = function(req, res) {
+	var article = new Article(req.body);
+	article.user = req.user;
+
+	article.save(function(err) {
+		if (err) {
+			return res.send(400, {
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(article);
+		}
+	});
+};
+
+/**
  * Show the current article
  */
 exports.read = function(req, res) {

@@ -85,5 +85,10 @@ angular.module('reviews').controller('ReviewsController', ['$scope', '$statePara
 				reviewId: $stateParams.reviewId
 			});
 		};
+
+		$scope.createVersion = function() {
+			$location.search({comment: $scope.comment});
+			$location.path('articles/' + $scope.articleId + '/version');
+		};
 	}
 	]);

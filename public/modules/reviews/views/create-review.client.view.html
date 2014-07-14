@@ -80,7 +80,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-2 control-label" for="comment">Comment</label>
+                <label class="col-md-2 control-label" for="comment">Commentaire</label>
                 <div class="col-md-10">
                     <textarea data-ng-model="comment" id="comment" class="form-control" placeholder="Comment" required></textarea>
                 </div>
@@ -90,7 +90,8 @@
                 <div data-ng-show="error" class="text-danger">
                     <strong data-ng-bind="error"></strong>
                 </div>
-                <input type="submit" class="btn btn-default">
+                <input type="submit" class="btn btn-warning" value="Envoyer le commentaire">
+                <button type="button" class="btn btn-primary" ng-click="createVersion()">Proposer une nouvelle version</button>
             </div>
         </form>
     </div>

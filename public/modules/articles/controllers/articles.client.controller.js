@@ -68,13 +68,13 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				$scope.error = errorResponse.data.message;
 			});
 
-			this.title = '';
+			/*this.title = '';
 			this.url = '';
 			this.format = '';
 			this.description = '';
 			this.language = '';
 			this.authorsCommaSeparated = '';
-			this.tagsCommaSeparated = '';
+			this.tagsCommaSeparated = '';*/
 		};
 
 		$scope.remove = function(article) {

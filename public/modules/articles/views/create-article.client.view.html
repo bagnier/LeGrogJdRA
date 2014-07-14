@@ -14,8 +14,8 @@
 					<label class="col-md-2 control-label" for="title">Title</label>
 					<div class="col-md-10 controls">
 						<input type="text" data-ng-model="title" name="title" class="form-control" placeholder="Title" required>
+						<span ng-show="article.title.$error.required">The title is required.</span>
 					</div>
-					<span ng-show="article.title.$error.required">The title is required.</span>
 				</div>
 				<div class="form-group">
 					<label class="col-md-2 control-label" for="authors">Authors (séparés d'un point virgule)</label>
@@ -107,6 +107,7 @@
 						<button type="button" class="btn" ng-class="(evaluations.spelling) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.spelling = false">Non</button>
 					</div>
 					<div>
+						<span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.spelling"></span>
 						<span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.spelling"></span>
 					</div>
 				</div>
@@ -118,6 +119,7 @@
 						<button type="button" class="btn" ng-class="(evaluations.content) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.content = false">Non</button>
 					</div>
 					<div>
+						<span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.content"></span>
 						<span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.content"></span>
 					</div>
 				</div>
@@ -129,6 +131,7 @@
 						<button type="button" class="btn" ng-class="(evaluations.shape) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.shape = false">Non</button>
 					</div>
 					<div>
+						<span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.shape"></span>
 						<span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.shape"></span>
 					</div>
 				</div>
@@ -140,6 +143,7 @@
 						<button type="button" class="btn" ng-class="(evaluations.neutrality) ? 'btn-default' : 'btn-primary'" ng-click="evaluations.neutrality = false">Non</button>
 					</div>
 					<div>
+						<span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="evaluations.neutrality"></span>
 						<span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!evaluations.neutrality"></span>
 					</div>
 				</div>

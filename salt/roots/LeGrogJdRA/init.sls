@@ -6,6 +6,8 @@ legrog-user:
     - home: /home/legrog
     - require:
       - group: legrog
+    - require-in:
+      - service: supervisor
   group.present:
     - gid: 1002
     - name: legrog
@@ -23,6 +25,9 @@ git:
 /etc/supervisor/conf.d/LeGrogJdRA.conf:
   file.managed:
     - source: salt://LeGrogJdRA/LeGrogJdRA.supervisor
+    - user: root
+    - group: root
+    - mode: 644
     - require:
       - pkg: supervisor
 
@@ -30,12 +35,18 @@ git:
   file.managed:
     - user: root
     - group: root
-    - mode: 440
+    - mode: 644
     - source: salt://LeGrogJdRA/LeGrogJdRA.nginx
+    - require:
+      - pkg: nginx
 
 /etc/nginx/sites-enabled/LeGrogJdRA:
   file.symlink:
     - target: /etc/nginx/sites-available/LeGrogJdRA
+    - watch_in:
+      - service: nginx
+    - require:
+      - pkg: nginx
 
 LeGrogJdRA:
   git.latest:

@@ -2,7 +2,7 @@
   # pkg.uptodate:
     # - refresh : true
   # cmd.run:
-    # - name: apt-get -y autoremove
+    # - name: apt-get -y --purge autoremove
   ## salt.modules.aptpkg. autoremove (list_only=False)
 
 core-admin-tools:

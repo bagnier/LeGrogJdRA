@@ -30,7 +30,7 @@ mongodb_log_path:
 
 mongodb_service:
   service.running:
-    - name: mongodb
+    - name: mongod
     - enable: True
     - watch:
       - file: mongodb_configuration
@@ -42,6 +42,8 @@ mongodb_configuration:
     - user: root
     - group: root
     - mode: 644
+    - require:
+      - pkg: mongodb_package
 
 mongodb_logrotate:
   file.managed:

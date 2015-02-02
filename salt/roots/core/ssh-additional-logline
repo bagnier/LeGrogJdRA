@@ -1,0 +1,8 @@
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Could not write ident string to UNKNOWN$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: error: Received disconnect from [:[:xdigit:].]+: [[:digit:]]+: com.jcraft.jsch.JSchException: Auth fail [preauth]$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: error: Received disconnect from [:[:xdigit:].]+: [[:digit:]]+: java.net.SocketTimeoutException: Read timed out [preauth]$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: fatal: Read from socket failed: Connection reset by peer [preauth]$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: fatal: Write failed: Connection reset by peer [preauth]$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: PAM service(sshd) ignoring max retries; [[:digit:]]+ > 3$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Received disconnect from [:[:xdigit:].]+: [[:digit:]]+: Normal Shutdown, Thank you for playing [preauth]$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: warning: can't get client address: Connection reset by peer$

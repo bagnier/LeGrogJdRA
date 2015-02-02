@@ -1,0 +1,47 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          firewall
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start firewall at boot time
+# Description:       Enable firewall.
+### END INIT INFO
+
+IPT=/sbin/iptables
+DEVICE=venet0
+case "$1" in
+start)
+  $IPT -F INPUT
+  $IPT -A INPUT -i $DEVICE -m state --state ESTABLISHED,RELATED -j ACCEPT
+# ssh 
+  $IPT -A INPUT -i $DEVICE -p tcp --dport 22 -m state --state NEW -j ACCEPT
+# http
+  $IPT -A INPUT -i $DEVICE -p tcp --dport 80 -m state --state NEW -j ACCEPT
+#
+  $IPT -A INPUT -i $DEVICE -p icmp -j ACCEPT
+  $IPT -A INPUT -i $DEVICE -j REJECT
+  echo started.
+  exit 0
+;;
+stop)
+  $IPT -F INPUT
+  echo stopped.
+  exit 0
+;;
+restart)
+  /etc/init.d/firewall stop
+  /etc/init.d/firewall start
+  exit 0
+;;
+status)
+  $IPT -L
+  exit 0
+;;
+*)
+  echo "Usage: /etc/init.d/firewall {start|stop|restart|status}"
+  exit 1
+;;
+esac

@@ -1,0 +1,9 @@
+server {
+    location / {
+        proxy_pass http://localhost:3000;
+    }
+
+    location /public/ {
+        root /home/legrog/LeGrogJdRA/public;
+    }
+}

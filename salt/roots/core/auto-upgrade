@@ -1,0 +1,9 @@
+#!/bin/bash
+export LANG="C"
+apt-get update > /tmp/auto-upgrade 2>&1
+if [ $? -ne 0 ]; then
+  echo apt-get update FAILED :
+  cat /tmp/auto-upgrade
+fi
+DEBIAN_FRONTEND='noninteractive'
+apt-get -y upgrade

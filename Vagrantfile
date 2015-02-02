@@ -8,6 +8,8 @@ Vagrant.configure("2") do |config|
   ## Fix the "stdin: is not a tty" warning
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
   config.vm.provision :salt do |salt|
     salt.minion_config = "salt/minion"
     salt.run_highstate = true

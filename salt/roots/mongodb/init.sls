@@ -37,6 +37,7 @@ mongodb_service:
 
 mongodb_configuration:
   file.managed:
+    ## the lack of source creates a warning
     - name: /etc/mongod.conf
     - user: root
     - group: root

@@ -39,6 +39,8 @@ git:
     - source: salt://LeGrogJdRA/LeGrogJdRA.nginx
     - require:
       - pkg: nginx
+    - watch_in:
+      - service: nginx
 
 /etc/nginx/sites-enabled/LeGrogJdRA:
   file.symlink:

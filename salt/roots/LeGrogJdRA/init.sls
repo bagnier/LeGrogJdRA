@@ -67,3 +67,5 @@ LeGrogJdRA:
       - npm: bower
     - watch:
       - git: LeGrogJdRA
+    - watch_in:
+      - service: supervisor

@@ -5,6 +5,8 @@ nodejs:
 
 npm:
   pkg.installed: []
+  - require:
+      - pkg: nodejs
 
 grunt:
   npm.installed:

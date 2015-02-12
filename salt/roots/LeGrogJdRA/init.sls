@@ -27,6 +27,7 @@ git:
     - require:
       - pkg: supervisor
       - user: legrog
+      - file: /var/log/LeGrogJdRA
 
 /etc/nginx/sites-available/LeGrogJdRA:
   file.managed:

@@ -56,6 +56,8 @@ LeGrogJdRA:
     - name: https://github.com/bagnier/LeGrogJdRA.git
     - target: /home/legrog/LeGrogJdRA
     - user: legrog
+    - require: 
+      - pkg: git
   cmd.wait:
     - name: rm -rf node_modules; npm install; NODE_ENV='' grunt build
     - user: legrog
@@ -65,6 +67,7 @@ LeGrogJdRA:
       - npm: grunt
       - npm: grunt-cli
       - npm: bower
+      - git: LeGrogJdRA
     - watch:
       - git: LeGrogJdRA
     - watch_in:

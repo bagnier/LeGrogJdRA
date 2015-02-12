@@ -1,0 +1,14 @@
+<section data-ng-controller="HomeController">
+	<div class="jumbotron">
+		<img src="http://www.legrog.org/visuels/art/bannieres/grog/banniere2.gif" alt="logo">
+		<h1>Le Grog JdRA (reloaded)</h1>
+		<p>Bienvenues sur la plateforme expérimentale du Grog autour des Jeux de Rôle Amateurs.</p>
+		<p><a class="btn btn-primary btn-lg" role="button" href="#!/articles">Voir les fiches</a>
+		   <a class="btn btn-primary btn-lg" data-ng-hide="!authentication.user" role="button" href="#!/articles/create">Créer une fiche</a>
+		   <a class="btn btn-primary btn-lg" data-ng-hide="authentication.user" role="button" href="/#!/signin">Créer une fiche</a></p>
+		<p>Les dernières activités :<p>
+		<div class="list-group">
+			<p data-ng-repeat="activity in activities"><a class="list-group-item" href="#!/articles/{{activity.article._id}}">{{activity.user.displayName}} {{activity.story}} {{activity.article.title}}</a></p>
+		</div>
+	</div>
+</section>

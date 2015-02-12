@@ -1,0 +1,78 @@
+<section data-ng-controller="ArticlesController" data-ng-init="findOneArticleAndRelated()">
+	<div class="page-header">
+		<h1 data-ng-bind="article.title"></h1>
+	</div>
+	<div class="pull-right">
+		<a class="btn btn-primary" data-ng-href="/#!/reviews/create?articleId={{article._id}}">
+			<i class="glyphicon glyphicon-check"></i>
+		</a>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == article.user._id))">
+		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<div>
+		<small>
+			<em class="text-muted">
+				Posted on
+				<span data-ng-bind="article.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="article.user.displayName"></span>
+			</em>
+		</small>
+	</div>
+	<div>
+		Auteurs :
+		<span data-ng-repeat="author in article.authors">
+			<a href="{{author.url}}" class="label label-warning" target="_blank">{{author.name}}</a>
+  		</span>
+	</div>
+	<div>
+  		Tags :
+		<span data-ng-repeat="tag in article.tags">
+			<span class="label label-info">{{tag}}</span>
+  		</span>
+  	</div>
+  	<p class="">Langue : <span data-ng-bind="article.language"></span></p>
+  	<p class="" ng-hide="article.noUrl">Adresse :
+  		<a data-ng-href="{{article.url}}" class="label label-primary" target="_blank">page du jeu</a>
+  		<a data-ng-href="http://web.archive.org/web/*/{{article.url}}" class="label label-default" target="_blank">archive</a>
+  	</p>
+  	<p class="">Format : <span data-ng-bind-html="article.format"></span></p>
+  	<p class="lead" data-ng-bind-html="article.description"></p>
+  	<hr>
+  	<ul class="list-group">
+  		<p data-ng-repeat="activity in activities"><a class="list-group-item" href="#!/articles/{{activity.article._id}}">{{activity.user.displayName}} {{activity.story}} {{activity.article.title}}</a></p>
+  	</ul>
+  	<hr>
+  	<div class="list-group">
+        <a data-ng-repeat="review in reviews" data-ng-href="#!/reviews/{{review._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="review.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="review.user.displayName"></span>
+			</small>
+            <h4 class="list-group-item-heading">
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.spelling"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.spelling"></span>
+                Orthographe - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.content"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.content"></span>
+                Contenu - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.shape"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.shape"></span>
+                Forme - 
+                <span class="control-label glyphicon glyphicon-ok" style="color:green" data-ng-hide="!review.evaluations.neutrality"></span>
+                <span class="control-label glyphicon glyphicon-remove" style="color:red" data-ng-hide="review.evaluations.neutrality"></span>
+                Neutralité
+            </h4>
+			<p data-ng-bind="review.comment"></p>
+            <p data-ng-bind="review.article.title"></p>
+        </a>
+    </div>
+</section>

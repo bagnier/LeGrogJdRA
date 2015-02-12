@@ -4,6 +4,14 @@ Cette application est une expérimentation de rénovation du Grog, l'encyclopéd
 
 Cette application est fondée sur les technologies MongoDB, Node.js, Express.js, Angular.js ainsi que Ubuntu, Salt, Vagrant et Virtualbox.
 
+## Requirements on your dev host
+- Vagrant
+- Virtualbox
+
+## Gentlemen, start your engine
+- "vagrant up"
+- then browse https://localhost:4443
+
 ## Credits
 Authors: Stéphane Bagnier, Yannick Grenzinger
 
@@ -28,12 +36,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## Requirements on your dev host
-
-- Vagrant
-- Virtualbox
-
-## Single startup command
-
-vagrant up

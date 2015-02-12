@@ -46,10 +46,14 @@ git:
 /etc/nginx/sites-enabled/LeGrogJdRA:
   file.symlink:
     - target: /etc/nginx/sites-available/LeGrogJdRA
-    - watch_in:
-      - service: nginx
     - require:
       - pkg: nginx
+
+extend: 
+  nginx:
+    service.running:
+      - watch:
+        - file: /etc/nginx/sites-available/LeGrogJdRA
 
 LeGrogJdRA:
   git.latest:

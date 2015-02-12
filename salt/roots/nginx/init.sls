@@ -7,8 +7,6 @@ nginx:
   service.running:
     - require:
       - pkg: nginx
-    - watch:
-      - file: /etc/nginx/sites-enabled/*
 
 /etc/nginx/ssl:
   file.directory:

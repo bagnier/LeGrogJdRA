@@ -4,8 +4,8 @@ nodejs:
   - name: nodejs-legacy
 
 npm:
-  pkg.installed: []
-  - require:
+  pkg.installed:
+    - require:
       - pkg: nodejs
 
 grunt:

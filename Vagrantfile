@@ -9,12 +9,13 @@ Vagrant.configure("2") do |config|
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
   config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 443, host: 4443
 
   config.vm.provision :salt do |salt|
     salt.minion_config = "salt/minion"
     salt.run_highstate = true
     salt.verbose = true
-    # salt.log_level = "warning"
+    salt.log_level = "warning"
     salt.colorize = true
   end
 end

@@ -1,16 +1,12 @@
-legrog-user:
+legrog:
   user.present:
-    - name: legrog
     - uid: 1002
     - gid: 1002
     - home: /home/legrog
     - require:
       - group: legrog
-    - require-in:
-      - service: supervisor
   group.present:
     - gid: 1002
-    - name: legrog
 
 /var/log/LeGrogJdRA:
   file:
@@ -30,6 +26,7 @@ git:
     - mode: 644
     - require:
       - pkg: supervisor
+      - user: legrog
 
 /etc/nginx/sites-available/LeGrogJdRA:
   file.managed:
@@ -37,10 +34,13 @@ git:
     - group: root
     - mode: 644
     - source: salt://LeGrogJdRA/LeGrogJdRA.nginx
+    - template: jinja
     - require:
       - pkg: nginx
     - watch_in:
       - service: nginx
+    - context:
+        server_name: localhost
 
 /etc/nginx/sites-enabled/LeGrogJdRA:
   file.symlink:
@@ -56,7 +56,7 @@ LeGrogJdRA:
     - target: /home/legrog/LeGrogJdRA
     - user: legrog
   cmd.wait:
-    - name: rm -rf node_modules; npm install; export NODE_ENV=''; grunt build
+    - name: rm -rf node_modules; npm install; NODE_ENV='' grunt build
     - user: legrog
     - cwd: /home/legrog/LeGrogJdRA
     - require:

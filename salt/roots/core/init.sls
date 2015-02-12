@@ -1,15 +1,7 @@
-# fresh-look:
-  # pkg.uptodate:
-    # - refresh : true
-  # cmd.run:
-    # - name: apt-get -y --purge autoremove
-  ## salt.modules.aptpkg. autoremove (list_only=False)
-
 core-admin-tools:
   pkg.installed:
     - names:
       - htop
-      - fail2ban
       - ntp
       - postfix
       - bsd-mailx
@@ -17,10 +9,19 @@ core-admin-tools:
       - curl
 
 remove-chef-and-puppet-from-ubuntu-vagrant-box:
-  pkg.removed:
+  pkg.purged:
     - names:
       - chef
       - puppet
+
+fail2ban:
+  pkg.installed: []
+  service.running:
+    - enable: True
+    - restart: True
+    - require:
+      - pkg: fail2ban
+    - reload: True
 
 logcheck:
   pkg.installed:
@@ -53,19 +54,31 @@ rsyslog:
     - group: root
     - mode: 755
   cmd.wait:
-    - name: update-rc.d firewall start 01 2 3 4 5 . stop 98 0 1 6 .
+    - name: rm /etc/rc*/*firewall; update-rc.d firewall defaults 2 98
+    - watch:
+      - file: /etc/init.d/firewall
+  service.running:
+    - name: firewall
     - watch:
       - file: /etc/init.d/firewall
 
-firewall:
-  cmd.wait:
-    - name: /etc/init.d/firewall start
-    - watch:
-      - file: /etc/init.d/firewall
+# http://askubuntu.com/questions/440649/how-to-disable-ipv6-in-ubuntu-14-04
+
+net.ipv6.conf.all.disable_ipv6:
+  sysctl.present:
+    - value: 1
+
+net.ipv6.conf.default.disable_ipv6:
+  sysctl.present:
+    - value: 1
+
+net.ipv6.conf.lo.disable_ipv6:
+  sysctl.present:
+    - value: 1
 
 send-root-email-to-somebody:
   alias.present:
    - name: root
-   - target: "stephane.bagnier@gmail.com"
+   - target: root
    - require: 
      - pkg: postfix

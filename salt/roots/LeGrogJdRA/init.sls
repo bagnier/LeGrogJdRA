@@ -59,7 +59,7 @@ LeGrogJdRA:
   cmd.wait:
     - name: rm -rf node_modules; npm install; NODE_ENV='' grunt build
     - user: legrog
-    - cwd: /home/legrog/LeGrogJdRA
+    - cwd: /home/legrog/LeGrogJdRA/application
     - require:
       - pkg: npm
       - npm: grunt

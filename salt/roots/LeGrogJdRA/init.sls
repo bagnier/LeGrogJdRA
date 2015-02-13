@@ -44,7 +44,7 @@ git:
     - watch_in:
       - service: nginx
     - context:
-        server_name: localhost
+        server_name: {{ pillar.serverName }}
 
 /etc/nginx/sites-enabled/LeGrogJdRA:
   file.symlink:

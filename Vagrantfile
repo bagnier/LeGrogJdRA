@@ -4,6 +4,7 @@ Vagrant.configure("2") do |config|
 
   ## For masterless, mount your salt file root
   config.vm.synced_folder "salt/roots/", "/srv/salt/"
+  config.vm.synced_folder "salt/pillar/", "/srv/pillar/"
 
   ## Fix the "stdin: is not a tty" warning
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"

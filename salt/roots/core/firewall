@@ -11,7 +11,7 @@
 ### END INIT INFO
 
 IPT=/sbin/iptables
-DEVICE=venet0
+DEVICE={{ device }}
 case "$1" in
 start)
   $IPT -F INPUT

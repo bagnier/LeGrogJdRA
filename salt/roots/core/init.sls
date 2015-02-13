@@ -53,6 +53,9 @@ rsyslog:
     - user: root
     - group: root
     - mode: 755
+    - template: jinja
+    - context:
+      device: {{ pillar.device }}
   cmd.wait:
     - name: rm /etc/rc*/*firewall; update-rc.d firewall defaults 2 98
     - watch:
@@ -79,6 +82,6 @@ net.ipv6.conf.lo.disable_ipv6:
 send-root-email-to-somebody:
   alias.present:
    - name: root
-   - target: root
+   - target: {{ pillar.emailReceiver }}
    - require: 
      - pkg: postfix

@@ -24,7 +24,7 @@ node_modules:
       - pkg: npm
       - npm: bower
       - user: legrog
-      - file: /home/legrog/application
+      - cmd: /home/legrog/application
 
 LeGrogJdRA:
   cmd.wait:

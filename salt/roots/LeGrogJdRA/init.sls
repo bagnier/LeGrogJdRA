@@ -1,3 +1,6 @@
+include:
+  - nginx
+
 legrog:
   user.present:
     - uid: 1002
@@ -48,12 +51,13 @@ git:
     - target: /etc/nginx/sites-available/LeGrogJdRA
     - require:
       - pkg: nginx
+      - file: /etc/nginx/sites-available/LeGrogJdRA
 
 extend: 
   nginx:
     service.running:
       - watch:
-        - file: /etc/nginx/sites-available/LeGrogJdRA
+        - file: /etc/nginx/sites-enabled/LeGrogJdRA
 
 LeGrogJdRA:
   git.latest:

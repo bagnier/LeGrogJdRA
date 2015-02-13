@@ -7,6 +7,8 @@ nginx:
   service.running:
     - require:
       - pkg: nginx
+      - file: /etc/nginx/ssl
+      - cmd: /etc/nginx/ssl
 
 /etc/nginx/ssl:
   file.directory:

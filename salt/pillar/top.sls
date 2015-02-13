@@ -1,7 +1,7 @@
 base:
   'environment:vagrant':
     - match: grain
-    - dev
+    - vagrant
 
   'environment:vps':
     - match: grain

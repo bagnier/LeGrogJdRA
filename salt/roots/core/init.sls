@@ -6,6 +6,7 @@ core-admin-tools:
       - postfix
       - bsd-mailx
       - deborphan
+      - syslog-ng-core
       - curl
 
 remove-chef-and-puppet-from-ubuntu-vagrant-box:
@@ -35,7 +36,7 @@ logcheck:
   require:
     - pkg: logcheck-database
 
-rsyslog:
+syslog-ng:
   service.running:
     - watch:
         - file: /etc/logcheck/ignore.d.server/*

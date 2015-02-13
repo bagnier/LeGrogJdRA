@@ -10,7 +10,7 @@ legrog:
 
 /home/legrog/application:
   cmd.run:
-    - source: rm -rf /home/legrog/application; cp -r /root/LeGrogJdRA/application /home/legrog
+    - name: rm -rf /home/legrog/application; cp -r /root/LeGrogJdRA/application /home/legrog
     - user: legrog
     - require:
       - user: legrog

@@ -24,11 +24,6 @@ nginx:
     - watch:
       - file: /etc/nginx/ssl
 
-#/etc/nginx/conf.d/kibana.htpasswd:
-  #cmd.run:
-    #- name: htpasswd -c /etc/nginx/conf.d/kibana.htpasswd user
-    #- user: root
-
 /etc/fail2ban/jail.d/nginx-jail.conf:
   file.managed:
     - user: root

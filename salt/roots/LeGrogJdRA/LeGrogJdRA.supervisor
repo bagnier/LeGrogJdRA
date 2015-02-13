@@ -1,6 +1,6 @@
 [program:LeGrogJdRA]
 command=grunt
-directory=/home/legrog/LeGrogJdRA/application/
+directory=/home/legrog/application/
 autostart=true
 autorestart=true
 startretries=3

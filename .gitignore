@@ -10,3 +10,4 @@ app/tests/coverage/
 data/
 public/dist
 .vagrant/
+salt/pillar/vps.sls

@@ -67,7 +67,7 @@ LeGrogJdRA:
     - require: 
       - pkg: git
   cmd.wait:
-    - name: rm -rf node_modules; npm install; NODE_ENV='' grunt build
+    - name: rm -rf node_modules; npm cache clean; npm install; NODE_ENV='' grunt build
     - user: legrog
     - cwd: /home/legrog/LeGrogJdRA/application
     - require:

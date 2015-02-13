@@ -58,3 +58,5 @@ LeGrogJdRA:
       - pkg: supervisor
       - user: legrog
       - file: /var/log/LeGrogJdRA
+    - watch_in:
+      - service: supervisor

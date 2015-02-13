@@ -9,7 +9,14 @@ Cette application est fondée sur les technologies MongoDB, Node.js, Express.js,
 - Virtualbox
 
 ## Gentlemen, start your engine
-- "vagrant up"
+```
+vagrant up
+vagrant ssh
+cd /vagrant/application
+npm install
+grunt
+```
+
 - then browse https://localhost:4443
 
 ## Credits

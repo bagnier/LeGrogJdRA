@@ -6,3 +6,7 @@ base:
     - nginx
     - nodejs
     - LeGrogJdRA
+
+  'environment:vps':
+    - match: grain
+    - envprod

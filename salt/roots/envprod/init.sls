@@ -27,7 +27,7 @@ node_modules:
       - cmd: /home/legrog/application
 
 LeGrogJdRA:
-  cmd.wait:
+  cmd.run:
     - name: NODE_ENV='' grunt build
     - user: legrog
     - cwd: /home/legrog/application

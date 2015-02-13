@@ -9,7 +9,7 @@ Cette application est fondée sur les technologies MongoDB, Node.js, Express.js,
 - Virtualbox
 
 ## Gentlemen, start your engine
-```
+```bash
 vagrant up
 vagrant ssh
 cd /vagrant/application

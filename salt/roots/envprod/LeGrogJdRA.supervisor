@@ -1,0 +1,11 @@
+[program:LeGrogJdRA]
+command        = node server.js
+directory      = /home/legrog/application/
+autostart      = true
+autorestart    = true
+startsecs      = 10
+startretries   = 9
+stderr_logfile = /var/log/LeGrogJdRA/LeGrogJdRA.err.log
+stdout_logfile = /var/log/LeGrogJdRA/LeGrogJdRA.out.log
+user           = legrog
+environment    = NODE_ENV='production'

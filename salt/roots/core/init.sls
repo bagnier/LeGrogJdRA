@@ -8,6 +8,7 @@ core-admin-tools:
       - deborphan
       - syslog-ng-core
       - curl
+      - git
 
 remove-chef-and-puppet-from-ubuntu-vagrant-box:
   pkg.purged:

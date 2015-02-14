@@ -22,6 +22,7 @@ node_modules:
     - cwd: /home/legrog/application
     - require:
       - pkg: npm
+      - pkg: git
       - npm: bower
       - user: legrog
       - cmd: /home/legrog/application

@@ -50,7 +50,7 @@ LeGrogJdRA:
 
 /etc/supervisor/conf.d/LeGrogJdRA.conf:
   file.managed:
-    - source: salt://LeGrogJdRA/LeGrogJdRA.supervisor
+    - source: salt://envprod/LeGrogJdRA.supervisor
     - user: root
     - group: root
     - mode: 644
